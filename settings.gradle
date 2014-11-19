@@ -1,0 +1,5 @@
+rootProject.name = 'recurring-reminder'
+
+include ':app'
+
+project(':app').projectDir = "$rootDir/app" as File

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.mushfek.recurringreminder">
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <application android:label="@string/app_name">
+
+        <!-- Reminder broadcast receiver -->
+        <receiver android:name=".util.reminder.ReminderBroadcastReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Launcher activity -->
+        <activity
+            android:name=".activity.ReminderManagerActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Notification result activity (here data collection activity) -->
+        <activity android:name=".activity.DataCollectionActivity"
+                  android:label="@string/enter_data"
+                  android:windowSoftInputMode="stateHidden"
+                  android:configChanges="orientation|screenSize|keyboardHidden"/>
+
+    </application>
+
+</manifest>
